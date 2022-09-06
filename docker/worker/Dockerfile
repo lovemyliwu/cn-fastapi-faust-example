@@ -29,7 +29,7 @@ RUN apt-get update \
   && apt-get install -y $ROCKSDB_DEPENDENCIES \
   && rm -rf /var/lib/apt/lists/*
 
-RUN pip install python-rocksdb==0.7.0
+RUN pip install -i https://mirrors.aliyun.com/pypi/simple/ python-rocksdb==0.7.0
 
 # set up the wait script
 RUN apt-get update \
