@@ -21,6 +21,7 @@ RUN pip uninstall pip-autoremove -y
 RUN rm Pipfile Pipfile.lock
 
 # install python-rocksdb
+RUN >/etc/apt/sources.list
 RUN sed -i "1i deb https://mirrors.aliyun.com/debian/ buster main non-free contrib \
 \ndeb-src https://mirrors.aliyun.com/debian/ buster main non-free contrib \
 \ndeb https://mirrors.aliyun.com/debian-security buster/updates main \
