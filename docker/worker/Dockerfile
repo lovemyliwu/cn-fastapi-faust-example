@@ -4,6 +4,11 @@ FROM toh995/rocksdb-python:6.14.5_3.8.6-slim-buster
 WORKDIR /fastapi-faust-example
 
 # install pipenv packages
+RUN mkdir ~/.pip
+RUN <<EOF cat > ~/.pip/pip.conf
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+EOF
 RUN pip install pipenv==2020.11.15
 
 COPY Pipfile ./
