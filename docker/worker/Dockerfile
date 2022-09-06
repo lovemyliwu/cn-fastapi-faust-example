@@ -1,5 +1,3 @@
-# syntax = docker/dockerfile:1.4.0
-
 # this image has both python and rocksDB installed
 FROM toh995/rocksdb-python:6.14.5_3.8.6-slim-buster
 
@@ -7,10 +5,7 @@ WORKDIR /fastapi-faust-example
 
 # install pipenv packages
 RUN mkdir ~/.pip
-RUN <<EOF cat > ~/.pip/pip.conf
-[global]
-index-url = https://mirrors.aliyun.com/pypi/simple/
-EOF
+COPY pip.conf ~/.pip/
 RUN pip install pipenv==2020.11.15
 
 COPY Pipfile ./
