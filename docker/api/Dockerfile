@@ -20,15 +20,9 @@ RUN pip uninstall pip-autoremove -y
 RUN rm Pipfile Pipfile.lock
 
 # set up the wait script
-RUN >/etc/apt/sources.list
-RUN sed -i "1i deb https://mirrors.aliyun.com/debian/ buster main non-free contrib \
-\ndeb-src https://mirrors.aliyun.com/debian/ buster main non-free contrib \
-\ndeb https://mirrors.aliyun.com/debian-security buster/updates main \
-\ndeb-src https://mirrors.aliyun.com/debian-security buster/updates main \
-\ndeb https://mirrors.aliyun.com/debian/ buster-updates main non-free contrib \
-\ndeb-src https://mirrors.aliyun.com/debian/ buster-updates main non-free contrib \
-\ndeb https://mirrors.aliyun.com/debian/ buster-backports main non-free contrib  \
-\ndeb-src https://mirrors.aliyun.com/debian/ buster-backports main non-free contrib" /etc/apt/sources.list
+RUN rm /etc/apt/sources.list
+COPY sources.list /etc/apt/
+
 RUN apt-get update \
   && apt-get install -y netcat \
   && rm -rf /var/lib/apt/lists/*
