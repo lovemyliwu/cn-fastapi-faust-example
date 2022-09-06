@@ -1,3 +1,5 @@
+# syntax = docker/dockerfile:1.4.0
+
 # this image has both python and rocksDB installed
 FROM toh995/rocksdb-python:6.14.5_3.8.6-slim-buster
 
