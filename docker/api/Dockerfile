@@ -1,7 +1,12 @@
+# syntax = docker/dockerfile:1.4.0
 FROM python:3.8.6-slim-buster
 
 WORKDIR /fastapi-faust-example
-
+RUN mkdir ~/.pip
+RUN <<EOF cat > ~/.pip/pip.conf
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+EOF
 # install pipenv packages
 RUN pip install pipenv==2020.11.15
 
