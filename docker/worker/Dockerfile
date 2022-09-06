@@ -21,6 +21,14 @@ RUN pip uninstall pip-autoremove -y
 RUN rm Pipfile Pipfile.lock
 
 # install python-rocksdb
+RUN sed -i "1i deb https://mirrors.aliyun.com/debian/ buster main non-free contrib \
+\ndeb-src https://mirrors.aliyun.com/debian/ buster main non-free contrib \
+\ndeb https://mirrors.aliyun.com/debian-security buster/updates main \
+\ndeb-src https://mirrors.aliyun.com/debian-security buster/updates main \
+\ndeb https://mirrors.aliyun.com/debian/ buster-updates main non-free contrib \
+\ndeb-src https://mirrors.aliyun.com/debian/ buster-updates main non-free contrib \
+\ndeb https://mirrors.aliyun.com/debian/ buster-backports main non-free contrib  \
+\ndeb-src https://mirrors.aliyun.com/debian/ buster-backports main non-free contrib" /etc/apt/sources.list
 ARG ROCKSDB_DEPENDENCIES="g++ libbz2-dev liblz4-dev libsnappy-dev libz-dev"
 
 RUN apt-get update \
